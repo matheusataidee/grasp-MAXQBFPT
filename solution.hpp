@@ -22,6 +22,8 @@ class Solution {
         void add(int p);
 
         void sub(int p);
+
+        bool hasElem(int p);
         
         bool canAdd(int p);
 

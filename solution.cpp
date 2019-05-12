@@ -46,6 +46,11 @@ void Solution::sub(int p) {
     }
 }
 
+bool Solution::hasElem(int p) {
+    if (v[p] == 1) return true;
+    return false;
+}
+
 bool Solution::canAdd(int p) {
     for (int i = 0; i < reversed_triples[p].size(); i++) {
         int val = reversed_triples[p][i];
