@@ -1,0 +1,20 @@
+Instance: .\instances\qbf020
+best score found: 125
+
+Instance: .\instances\qbf040
+best score found: 366
+
+Instance: .\instances\qbf060
+best score found: 508
+
+Instance: .\instances\qbf080
+best score found: 851
+
+Instance: .\instances\qbf100
+best score found: 1263
+
+Instance: .\instances\qbf200
+best score found: 4122
+
+Instance: .\instances\qbf400
+best score found: 11894

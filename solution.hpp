@@ -28,6 +28,8 @@ class Solution {
         bool canAdd(int p);
 
         bool canPerm(int in, int out);
+
+        bool localSearch();
 };
 
 #endif /* _SOLUTION_H_ */

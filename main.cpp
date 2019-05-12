@@ -104,22 +104,24 @@ int main(int argc, char** argv) {
             candidates.push_back({weights[i][i], i});
         }
         while (contructionIteration(cur));
-        cout << "z = " << z << " solution score = " << cur.getScore() << endl;
+        cout << "z = " << z << " solution construction score = " << cur.getScore() << endl;
+        while (cur.localSearch());
+        cout << "z = " << z << " solution after localSearch score = " << cur.getScore() << endl << endl;
         if (cur.getScore() > best_solution.getScore()) {
             best_solution = cur;
         }
     }
-    cout << best_solution.getScore() << endl;
-    /*Solution solution(n);
-    Solution a(5);
-    cout << solution.getScore() << endl;
-    int adders[9] = {2, 3, 4, 9, 11, 14, 15, 16, 19};
-    for (int i = 0; i < 9; i++) {
-        solution.add(adders[i]);
+    bool invalid = false;
+    for (int i = 0; i < n; i++) {
+        if (best_solution.hasElem(triples[i][0]) && best_solution.hasElem(triples[i][1]) && best_solution.hasElem(triples[i][2])) {
+            cout << "INVALID" << endl;
+            invalid = true;
+        }
     }
-    cout << solution.getScore() << endl;
-    a = solution;
-    cout << a.getScore() << endl;*/
+    if (invalid == false) {
+        cout << "Valid solution confirmed" << endl;
+    }
+    cout << "best score found: " << best_solution.getScore() << endl;
 
     return 0;
 }

@@ -39,6 +39,7 @@ void Solution::sub(int p) {
             diff += (weights[i][p] + weights[p][i]) * v[i] ;
         }
     }
+    v[p] = 0;
     score -= diff;
     for (int i = 0; i < reversed_triples[p].size(); i++) {
         int val = reversed_triples[p][i];
@@ -76,4 +77,46 @@ bool Solution::canPerm(int in, int out) {
         if (triple_qnt[val] == 2) return false;
     }
     return true;
+}
+
+bool Solution::localSearch() {
+    double current_score = score;
+    for (int i = 0; i < len; i++) {
+        if (!v[i]) continue;
+        sub(i);
+        if (score > current_score) {
+            return true;
+        } else {
+            add(i);
+        }
+    }
+
+    for (int i = 0; i < len; i++) {
+        if (v[i]) continue;
+        if (!canAdd(i)) continue;
+        add(i);
+        if (score > current_score) {
+            return true;
+        } else {
+            sub(i);
+        }
+    }
+
+    for (int i = 0; i < len; i++) {
+        for (int j = 0; j < len; j++) {
+            if (i == j) continue;
+            if (!v[i] && v[j]) {
+                if (!canPerm(i, j)) continue;
+                add(i);
+                sub(j);
+                if (score > current_score) {
+                    return true;
+                } else {
+                    sub(i);
+                    add(j);
+                }
+            }
+        }
+    }
+    return false;
 }
