@@ -65,7 +65,15 @@ int main(int argc, char** argv) {
     mountTriples();
 
     Solution solution(n);
+    Solution a(5);
     cout << solution.getScore() << endl;
+    int adders[9] = {2, 3, 4, 9, 11, 14, 15, 16, 19};
+    for (int i = 0; i < 9; i++) {
+        solution.add(adders[i]);
+    }
+    cout << solution.getScore() << endl;
+    a = solution;
+    cout << a.getScore() << endl;
 
     return 0;
 }

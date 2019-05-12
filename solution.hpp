@@ -11,6 +11,7 @@ extern vector<vector<int> > reversed_triples;
 class Solution {
     private:
         double score;
+        int len;
         vector<int> v;
         vector<int> triple_qnt;
     public:
