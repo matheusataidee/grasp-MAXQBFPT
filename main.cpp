@@ -1,11 +1,15 @@
 #include <bits/stdc++.h>
 
+#include "solution.hpp"
+
+
 using namespace std;
 
 int n;
 vector<vector<double> > weights;
 vector<vector<int> > triples;
 vector<vector<int> > reversed_triples;
+vector<pair<double, int> > candidates;
 
 int lFunction(int u, int pi_1, int pi_2) {
     return 1 + (pi_1 * u + pi_2) % n;
@@ -60,17 +64,8 @@ int main(int argc, char** argv) {
     fin.close();
     mountTriples();
 
-    cout << "Prohibited triples:" << "          Reversed prohibited triples:" <<endl;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < triples[i].size(); j++) {
-            cout << triples[i][j] << " ";
-        }
-        cout << "                        ";
-        for (int j = 0; j < reversed_triples[i].size(); j++) {
-            cout << reversed_triples[i][j] << " ";
-        }
-        cout << endl;
-    }
+    Solution solution(n);
+    cout << solution.getScore() << endl;
 
     return 0;
 }
